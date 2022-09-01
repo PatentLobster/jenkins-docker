@@ -2,7 +2,7 @@ FROM jenkins/jenkins
 USER root
 RUN apt-get -y update && \
  apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common && \
- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor | tee /usr/share/keyrings/ubuntu.gpg && \
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor >> /usr/share/keyrings/ubuntu.gpg && \
  add-apt-repository \
  "deb [signed-by=/usr/share/keyrings/ubuntu.gpg arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
  $(lsb_release -cs) \
