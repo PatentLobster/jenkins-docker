@@ -10,4 +10,6 @@ RUN apt-get -y install docker-ce docker-ce-cli containerd.io
 RUN curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
 RUN chmod +x /usr/local/bin/docker-compose 
 RUN ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+RUN groupmod -g $HOST_GID docker
+RUN usermod -aG docker jenkins
 USER jenkins
